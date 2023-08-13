@@ -1,4 +1,4 @@
-const Mobile = require("../Schemas/mobile")
+const Mobile = require("../model/mobile")
 
 const addMobile = async (req, res, next) =>{
     try{

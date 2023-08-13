@@ -6,8 +6,7 @@ const chalk = require("chalk");
 const port = 3000;
 const hostIP = "127.0.0.1"
 const bodyParser = require("body-parser");
-const addMobile = require("./functions/addMobile")
-const getMobiles = require("./functions/getMobiles")
+const routes = require("./routes");
 app.use(express.static(__dirname + "/"))
 app.get("/", (req, res)=>{
     res.render("index.html")
@@ -20,8 +19,7 @@ app.use(
     parameterLimit: 50000,
   })
 );
-app.post("/mobile", addMobile)
-app.get("/mobile", getMobiles)
+app.use(routes)
 app.listen(port,()=>{
 console.log("App listening to: "+port)
 })

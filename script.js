@@ -22,7 +22,7 @@ const addCards = (items) => {
 }
 function postMobile(mobile) {
     $.ajax({
-        url: '/mobile',
+        url: '/api/mobile',
         type: 'POST',
         data: JSON.stringify(mobile),
         contentType: 'application/json',
@@ -34,7 +34,7 @@ function postMobile(mobile) {
     })
 }
 function getMobiles() {
-    $.get('mobile', (result) => {
+    $.get('api/mobile', (result) => {
         console.log(result)
         addCards(result.data)
     })
