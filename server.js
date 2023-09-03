@@ -7,6 +7,19 @@ const port = 3000;
 const hostIP = "127.0.0.1"
 const bodyParser = require("body-parser");
 const routes = require("./routes");
+const io = require('socket.io')(http);
+
+io.on('connection', (socket) => {
+  console.log('A user connected');
+  socket.on('disconnect', () => {
+    console.log('User disconnected');
+  });
+
+  setInterval(()=>{
+    socket.emit("number", parseInt(Math.random()*10))
+  }, 1000)
+});
+
 app.use(express.static(__dirname + "/"))
 app.get("/", (req, res)=>{
     res.render("index.html")
